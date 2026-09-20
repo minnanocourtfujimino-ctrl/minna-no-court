@@ -1,0 +1,705 @@
+{
+ "generatedAt": "2026-09-20T18:27:46+09:00",
+ "source": "https://yoyacool.e-harp.jp/fujimino",
+ "days": [
+  "2026-09-20",
+  "2026-09-21",
+  "2026-09-22"
+ ],
+ "facilities": [
+  {
+   "id": "undokoen-futsal",
+   "name": "ふじみ野市運動公園 フットサルコート",
+   "kind": "市",
+   "sports": [
+    "futsal",
+    "soccer"
+   ],
+   "address": "ふじみ野市福岡新田247-1",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1009?rc=121&ptn=1",
+   "slots": [
+    {
+     "label": "9-10",
+     "start": "09:00",
+     "end": "10:00"
+    },
+    {
+     "label": "10-11",
+     "start": "10:00",
+     "end": "11:00"
+    },
+    {
+     "label": "11-12",
+     "start": "11:00",
+     "end": "12:00"
+    },
+    {
+     "label": "12-13",
+     "start": "12:00",
+     "end": "13:00"
+    },
+    {
+     "label": "13-14",
+     "start": "13:00",
+     "end": "14:00"
+    },
+    {
+     "label": "14-15",
+     "start": "14:00",
+     "end": "15:00"
+    },
+    {
+     "label": "15-16",
+     "start": "15:00",
+     "end": "16:00"
+    },
+    {
+     "label": "16-17",
+     "start": "16:00",
+     "end": "17:00"
+    },
+    {
+     "label": "17-18",
+     "start": "17:00",
+     "end": "18:00"
+    },
+    {
+     "label": "18-19",
+     "start": "18:00",
+     "end": "19:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "-",
+     "-",
+     "x",
+     "-",
+     "-",
+     "x",
+     "x",
+     "x",
+     "-",
+     "o"
+    ],
+    "2026-09-21": [
+     "f",
+     "f",
+     "x",
+     "f",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o"
+    ],
+    "2026-09-22": [
+     "o",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "f",
+     "f",
+     "f",
+     "f"
+    ]
+   }
+  },
+  {
+   "id": "sports-center-ground",
+   "name": "多目的グラウンド(スポーツセンター)",
+   "kind": "市",
+   "sports": [
+    "soccer",
+    "futsal"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1004?rc=101&ptn=1",
+   "slots": [
+    {
+     "label": "9-10",
+     "start": "09:00",
+     "end": "10:00"
+    },
+    {
+     "label": "10-11",
+     "start": "10:00",
+     "end": "11:00"
+    },
+    {
+     "label": "11-12",
+     "start": "11:00",
+     "end": "12:00"
+    },
+    {
+     "label": "12-13",
+     "start": "12:00",
+     "end": "13:00"
+    },
+    {
+     "label": "13-14",
+     "start": "13:00",
+     "end": "14:00"
+    },
+    {
+     "label": "14-15",
+     "start": "14:00",
+     "end": "15:00"
+    },
+    {
+     "label": "15-16",
+     "start": "15:00",
+     "end": "16:00"
+    },
+    {
+     "label": "16-17",
+     "start": "16:00",
+     "end": "17:00"
+    },
+    {
+     "label": "17-18",
+     "start": "17:00",
+     "end": "18:00"
+    },
+    {
+     "label": "18-19",
+     "start": "18:00",
+     "end": "19:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "o"
+    ],
+    "2026-09-21": [
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o"
+    ],
+    "2026-09-22": [
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x"
+    ]
+   }
+  },
+  {
+   "id": "binnuma-soccer",
+   "name": "びん沼サッカー場",
+   "kind": "市",
+   "sports": [
+    "soccer"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1013?rc=101&ptn=1",
+   "slots": [
+    {
+     "label": "午前",
+     "start": "06:00",
+     "end": "12:00"
+    },
+    {
+     "label": "午後",
+     "start": "12:00",
+     "end": "18:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "-",
+     "-"
+    ],
+    "2026-09-21": [
+     "o",
+     "o"
+    ],
+    "2026-09-22": [
+     "x",
+     "x"
+    ]
+   }
+  },
+  {
+   "id": "arakawa-soccer",
+   "name": "荒川運動公園 サッカー場",
+   "kind": "市",
+   "sports": [
+    "soccer"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1011?rc=111&ptn=1",
+   "slots": [
+    {
+     "label": "6-8",
+     "start": "06:00",
+     "end": "08:00"
+    },
+    {
+     "label": "8-10",
+     "start": "08:00",
+     "end": "10:00"
+    },
+    {
+     "label": "10-12",
+     "start": "10:00",
+     "end": "12:00"
+    },
+    {
+     "label": "12-14",
+     "start": "12:00",
+     "end": "14:00"
+    },
+    {
+     "label": "14-16",
+     "start": "14:00",
+     "end": "16:00"
+    },
+    {
+     "label": "16-18",
+     "start": "16:00",
+     "end": "18:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    "2026-09-21": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    "2026-09-22": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   }
+  },
+  {
+   "id": "sogo-arena",
+   "name": "ふじみ野市立総合体育館 アリーナ",
+   "kind": "市",
+   "sports": [
+    "basketball",
+    "futsal"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1001?rc=101&ptn=1",
+   "slots": [
+    {
+     "label": "午前",
+     "start": "09:00",
+     "end": "12:00"
+    },
+    {
+     "label": "午後1",
+     "start": "12:00",
+     "end": "15:00"
+    },
+    {
+     "label": "午後2",
+     "start": "15:00",
+     "end": "18:00"
+    },
+    {
+     "label": "夜間",
+     "start": "18:00",
+     "end": "21:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    "2026-09-21": [
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    "2026-09-22": [
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   }
+  },
+  {
+   "id": "uenodai-arena",
+   "name": "上野台体育館 アリーナ",
+   "kind": "市",
+   "sports": [
+    "basketball",
+    "futsal"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1005?rc=101&ptn=1",
+   "slots": [
+    {
+     "label": "午前",
+     "start": "09:00",
+     "end": "12:00"
+    },
+    {
+     "label": "午後１",
+     "start": "12:00",
+     "end": "15:00"
+    },
+    {
+     "label": "午後２",
+     "start": "15:00",
+     "end": "18:00"
+    },
+    {
+     "label": "夜間",
+     "start": "18:00",
+     "end": "21:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ],
+    "2026-09-21": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ],
+    "2026-09-22": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ]
+   }
+  },
+  {
+   "id": "komabayashi-arena",
+   "name": "駒林体育館 アリーナ",
+   "kind": "市",
+   "sports": [
+    "basketball",
+    "futsal"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1006?rc=101&ptn=1",
+   "slots": [
+    {
+     "label": "午前",
+     "start": "09:00",
+     "end": "12:00"
+    },
+    {
+     "label": "午後１",
+     "start": "12:00",
+     "end": "15:00"
+    },
+    {
+     "label": "午後２",
+     "start": "15:00",
+     "end": "18:00"
+    },
+    {
+     "label": "夜間",
+     "start": "18:00",
+     "end": "21:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ],
+    "2026-09-21": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ],
+    "2026-09-22": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ]
+   }
+  },
+  {
+   "id": "dai2-arena",
+   "name": "第2運動公園 アリーナ",
+   "kind": "市",
+   "sports": [
+    "basketball",
+    "futsal"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1010?rc=101&ptn=1",
+   "slots": [
+    {
+     "label": "午前",
+     "start": "09:00",
+     "end": "12:00"
+    },
+    {
+     "label": "午後1",
+     "start": "12:00",
+     "end": "15:00"
+    },
+    {
+     "label": "午後2",
+     "start": "15:00",
+     "end": "18:00"
+    },
+    {
+     "label": "夜間",
+     "start": "18:00",
+     "end": "21:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ],
+    "2026-09-21": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ],
+    "2026-09-22": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ]
+   }
+  },
+  {
+   "id": "dai2-tamokuteki",
+   "name": "第2運動公園 多目的球場",
+   "kind": "市",
+   "sports": [
+    "soccer"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1010?rc=141&ptn=1",
+   "slots": [
+    {
+     "label": "9-10",
+     "start": "09:00",
+     "end": "10:00"
+    },
+    {
+     "label": "10-11",
+     "start": "10:00",
+     "end": "11:00"
+    },
+    {
+     "label": "11-12",
+     "start": "11:00",
+     "end": "12:00"
+    },
+    {
+     "label": "12-13",
+     "start": "12:00",
+     "end": "13:00"
+    },
+    {
+     "label": "13-14",
+     "start": "13:00",
+     "end": "14:00"
+    },
+    {
+     "label": "14-15",
+     "start": "14:00",
+     "end": "15:00"
+    },
+    {
+     "label": "15-16",
+     "start": "15:00",
+     "end": "16:00"
+    },
+    {
+     "label": "16-17",
+     "start": "16:00",
+     "end": "17:00"
+    },
+    {
+     "label": "17-18",
+     "start": "17:00",
+     "end": "18:00"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    "2026-09-21": [
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "o"
+    ],
+    "2026-09-22": [
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "x",
+     "o"
+    ]
+   }
+  },
+  {
+   "id": "oihigashi-night",
+   "name": "大井東中学校夜間照明施設 グラウンド",
+   "kind": "市",
+   "sports": [
+    "soccer"
+   ],
+   "address": "要確認",
+   "feeNote": "要確認",
+   "teenNote": "要確認",
+   "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1008?rc=101&ptn=1",
+   "slots": [
+    {
+     "label": "19-19:30",
+     "start": "19:00",
+     "end": "19:30"
+    },
+    {
+     "label": "19:30-20",
+     "start": "19:30",
+     "end": "20:00"
+    },
+    {
+     "label": "20-20:30",
+     "start": "20:00",
+     "end": "20:30"
+    },
+    {
+     "label": "20:30-21",
+     "start": "20:30",
+     "end": "21:00"
+    },
+    {
+     "label": "21-21:30",
+     "start": "21:00",
+     "end": "21:30"
+    }
+   ],
+   "availability": {
+    "2026-09-20": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    "2026-09-21": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ],
+    "2026-09-22": [
+     "-",
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   }
+  }
+ ],
+ "errors": [],
+ "unknownStatusCodes": [
+  "A02"
+ ]
+}

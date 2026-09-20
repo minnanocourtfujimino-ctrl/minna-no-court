@@ -24,12 +24,24 @@ const MODE = process.env.SCRAPE_MODE || "api";
 // 市のシステムの statusType → 本サイトの状態コード
 //   o=空き, x=埋まり, l=抽選受付中, -=対象外(休館・公開前・受付終了など)
 // f(残りわずか)は面ごとの o/x を集計して算出する。
+// 対応表は市のシステムのページに埋め込まれた STATUS_TYPES 定義(全16種)に基づく。
 const STATUS_MAP = {
-  A01: "o", // ○ 利用可能
-  R03: "x", // × 空きなし
+  A01: "o", // 利用可能(ネット申込可)
+  A02: "o", // 空き状況のみ(空いているがネット申込不可)
+  A03: "o", // 電話受付(空いているが電話申込のみ)
+  U10: "o", // 窓口受付(空いているが窓口申込のみ)
+  L01: "l", // 抽選申込可
+  L02: "l", // 抽選申込可
+  L03: "l", // 抽選待ち
+  R03: "x", // 空きなし
   U01: "-", // 休館日
-  U03: "-", // 公開前・受付前
-  U05: "-", // 公開終了・受付終了
+  U02: "-", // 公開前
+  U03: "-", // 受付前
+  U04: "-", // 公開終了
+  U05: "-", // 受付終了
+  U07: "-", // 利用不可
+  U08: "-", // 一般開放(予約枠ではない)
+  U09: "-", // 設備保守
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -124,7 +136,7 @@ function slotLabel(start, end) {
 }
 
 // GetDay のレスポンス1件を { slots, availability } に変換する
-function parseGetDay(data, rc, days, unknownCodes) {
+function parseGetDay(data, rc, days, unknownCodes, facilityId) {
   const room = (data.rooms || []).find((r) => r.roomCode === rc) || (data.rooms || [])[0];
   if (!room) throw new Error("rooms が空");
 
@@ -152,7 +164,7 @@ function parseGetDay(data, rc, days, unknownCodes) {
           }
         }
       }
-      return aggregate(courtStatuses, unknownCodes);
+      return aggregate(courtStatuses, unknownCodes, `${facilityId} ${day}`);
     });
     availability[day] = perFrame;
   }
@@ -160,11 +172,11 @@ function parseGetDay(data, rc, days, unknownCodes) {
 }
 
 // 面ごとの statusType の配列 → 1枠の状態
-function aggregate(courtStatuses, unknownCodes) {
+function aggregate(courtStatuses, unknownCodes, context) {
   if (courtStatuses.length === 0) return "-";
   const mapped = courtStatuses.map((s) => {
     if (s in STATUS_MAP) return STATUS_MAP[s];
-    if (s != null) unknownCodes.add(s);
+    if (s != null && !unknownCodes.has(s)) unknownCodes.set(s, context);
     return "-";
   });
   const nOpen = mapped.filter((m) => m === "o").length;
@@ -181,7 +193,7 @@ function aggregate(courtStatuses, unknownCodes) {
 async function main() {
   const config = JSON.parse(fs.readFileSync(path.join(__dirname, "facilities.json"), "utf8"));
   const days = jstDays(3);
-  const unknownCodes = new Set();
+  const unknownCodes = new Map(); // code → 最初に観測した施設と日付
   const errors = [];
   const outFacilities = [];
 
@@ -199,7 +211,7 @@ async function main() {
       let availability = {};
       try {
         const data = await fetcher.getDay(config.lgc, fac.fc, fac.rc, days[0], days[days.length - 1]);
-        ({ slots, availability } = parseGetDay(data, fac.rc, days, unknownCodes));
+        ({ slots, availability } = parseGetDay(data, fac.rc, days, unknownCodes, fac.id));
         console.log(`ok   ${fac.id} (${Date.now() - t0}ms)`);
       } catch (e) {
         errors.push({ facilityId: fac.id, reason: String(e.message || e) });
@@ -220,11 +232,11 @@ async function main() {
     days,
     facilities: outFacilities,
     errors,
-    unknownStatusCodes: [...unknownCodes].sort(),
+    unknownStatusCodes: [...unknownCodes.entries()].map(([code, ctx]) => `${code} (${ctx})`).sort(),
   };
 
   if (unknownCodes.size > 0) {
-    console.warn(`未知の statusType を検出: ${[...unknownCodes].join(", ")} ("-" として扱った)`);
+    console.warn(`未知の statusType を検出: ${result.unknownStatusCodes.join(", ")} ("-" として扱った)`);
   }
 
   // 変化がなければ書き換えない(無駄なコミット防止)。ただし6時間に1回は更新時刻を出す。
