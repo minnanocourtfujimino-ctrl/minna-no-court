@@ -1,0 +1,126 @@
+{
+  "source": "https://yoyacool.e-harp.jp/fujimino",
+  "lgc": "112453",
+  "facilities": [
+    {
+      "id": "undokoen-futsal",
+      "name": "ふじみ野市運動公園 フットサルコート",
+      "kind": "市",
+      "fc": "1009",
+      "rc": "121",
+      "sports": ["futsal", "soccer"],
+      "address": "ふじみ野市福岡新田247-1",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1009?rc=121&ptn=1"
+    },
+    {
+      "id": "sports-center-ground",
+      "name": "多目的グラウンド(スポーツセンター)",
+      "kind": "市",
+      "fc": "1004",
+      "rc": "101",
+      "sports": ["soccer", "futsal"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1004?rc=101&ptn=1"
+    },
+    {
+      "id": "binnuma-soccer",
+      "name": "びん沼サッカー場",
+      "kind": "市",
+      "fc": "1013",
+      "rc": "101",
+      "sports": ["soccer"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1013?rc=101&ptn=1"
+    },
+    {
+      "id": "arakawa-soccer",
+      "name": "荒川運動公園 サッカー場",
+      "kind": "市",
+      "fc": "1011",
+      "rc": "111",
+      "sports": ["soccer"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1011?rc=111&ptn=1"
+    },
+    {
+      "id": "sogo-arena",
+      "name": "ふじみ野市立総合体育館 アリーナ",
+      "kind": "市",
+      "fc": "1001",
+      "rc": "101",
+      "sports": ["basketball", "futsal"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1001?rc=101&ptn=1"
+    },
+    {
+      "id": "uenodai-arena",
+      "name": "上野台体育館 アリーナ",
+      "kind": "市",
+      "fc": "1005",
+      "rc": "101",
+      "sports": ["basketball", "futsal"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1005?rc=101&ptn=1"
+    },
+    {
+      "id": "komabayashi-arena",
+      "name": "駒林体育館 アリーナ",
+      "kind": "市",
+      "fc": "1006",
+      "rc": "101",
+      "sports": ["basketball", "futsal"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1006?rc=101&ptn=1"
+    },
+    {
+      "id": "dai2-arena",
+      "name": "第2運動公園 アリーナ",
+      "kind": "市",
+      "fc": "1010",
+      "rc": "101",
+      "sports": ["basketball", "futsal"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1010?rc=101&ptn=1"
+    },
+    {
+      "id": "dai2-tamokuteki",
+      "name": "第2運動公園 多目的球場",
+      "kind": "市",
+      "fc": "1010",
+      "rc": "141",
+      "sports": ["soccer"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1010?rc=141&ptn=1"
+    },
+    {
+      "id": "oihigashi-night",
+      "name": "大井東中学校夜間照明施設 グラウンド",
+      "kind": "市",
+      "fc": "1008",
+      "rc": "101",
+      "sports": ["soccer"],
+      "address": "要確認",
+      "feeNote": "要確認",
+      "teenNote": "要確認",
+      "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1008?rc=101&ptn=1"
+    }
+  ]
+}

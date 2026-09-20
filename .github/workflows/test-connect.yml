@@ -1,0 +1,17 @@
+name: test-connect
+
+# GitHub Actions のサーバーから市のシステムに届くかの疎通確認(手動実行のみ・1リクエスト)
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 疎通確認(GetDay を1回だけ呼ぶ)
+        run: node scraper/check-connect.mjs

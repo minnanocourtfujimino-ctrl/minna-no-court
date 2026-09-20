@@ -1,0 +1,13 @@
+{
+  "name": "minna-no-court-scraper",
+  "private": true,
+  "type": "module",
+  "description": "ふじみ野市公共施設予約システムの空き状況を取得する(詳細はリポジトリのREADME参照)",
+  "scripts": {
+    "scrape": "node scrape.mjs",
+    "check": "node check-connect.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  }
+}

@@ -1,0 +1,7 @@
+# 依頼者の個人情報を含むローカル文書はコミットしない
+CLAUDE_CODE_指示書*.md
+フェーズ1_調査結果.md
+demo_*.html
+
+node_modules/
+.DS_Store
