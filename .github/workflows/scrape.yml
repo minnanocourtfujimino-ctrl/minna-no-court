@@ -7,9 +7,14 @@ on:
   schedule:
     - cron: "0 * * * *"
   workflow_dispatch:
+    inputs:
+      do_scrape:
+        description: "市サイトから取得も行う(直近1時間に取得していない時だけ true にする)"
+        type: boolean
+        default: false
   push:
     branches: [main]
-    paths: ["site/**", "scraper/parks.json"]
+    paths: ["site/**", "scraper/parks.json", ".github/workflows/scrape.yml"]
 
 permissions:
   contents: write
@@ -37,15 +42,16 @@ jobs:
           npm install playwright
           npx playwright install --with-deps chromium
 
-      # push時は取得せず配信のみ(市サイトへのアクセスは cron の1時間1回だけに保つ)
+      # 取得は cron(毎時1回)と、do_scrape=true を指定した手動実行のみ。
+      # push や通常の手動実行は配信だけ行う(市サイトへのアクセスを1時間1回に保つ)
       - name: 空き状況を取得
-        if: vars.SCRAPE_ENABLED == 'true' && github.event_name != 'push'
+        if: vars.SCRAPE_ENABLED == 'true' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.do_scrape))
         env:
           SCRAPE_MODE: ${{ vars.SCRAPE_MODE || 'api' }}
         run: node scraper/scrape.mjs
 
       - name: 変更があればコミット
-        if: vars.SCRAPE_ENABLED == 'true' && github.event_name != 'push'
+        if: vars.SCRAPE_ENABLED == 'true' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.do_scrape))
         run: |
           if ! git diff --quiet data/availability.json; then
             git config user.name "minna-no-court-bot"
