@@ -4,7 +4,7 @@
 
 const BASE = "https://yoyacool.e-harp.jp/fujimino";
 const CONTACT = process.env.SCRAPE_CONTACT || "minnanocourtfujimino@gmail.com";
-const USER_AGENT = `MinnaNoCourt/0.1 (+https://github.com/minnanocourt/minna-no-court; contact: ${CONTACT})`;
+const USER_AGENT = `MinnaNoCourt/0.1 (+https://github.com/minnanocourtfujimino-ctrl/minna-no-court; contact: ${CONTACT})`;
 
 const jst = new Date(Date.now() + 9 * 3600 * 1000);
 const today = jst.toISOString().slice(0, 10);

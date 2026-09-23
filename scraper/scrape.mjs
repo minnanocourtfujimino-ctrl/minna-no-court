@@ -17,7 +17,7 @@ const OUT_PATH = path.join(ROOT, "data", "availability.json");
 
 const BASE = "https://yoyacool.e-harp.jp/fujimino";
 const CONTACT = process.env.SCRAPE_CONTACT || "minnanocourtfujimino@gmail.com";
-const USER_AGENT = `MinnaNoCourt/0.1 (+https://github.com/minnanocourt/minna-no-court; contact: ${CONTACT})`;
+const USER_AGENT = `MinnaNoCourt/0.1 (+https://github.com/minnanocourtfujimino-ctrl/minna-no-court; contact: ${CONTACT})`;
 const INTERVAL_MS = Number(process.env.SCRAPE_INTERVAL_MS || 60_000);
 const MODE = process.env.SCRAPE_MODE || "api";
 
