@@ -1,4 +1,20 @@
 {
-  "_comment": "ボール遊びOKの公園リスト。依頼者が市の公園ページで確認したものだけを載せる。確認済みリストが届くまで空。",
-  "parks": []
+  "_comment": "予約なし・無料でボールが使える場所。市・指定管理者の公式ページで確認できたもののみ。source は確認元URL(サイトには表示しない)。",
+  "parks": [
+    {
+      "name": "ふじみ野市運動公園 バスケ3×3コート(2面)",
+      "note": "無料・予約不要のフリースペース。",
+      "source": "https://fujimino-park-sports.com/undoukouen/"
+    },
+    {
+      "name": "ふじみ野市運動公園 壁打ち練習ボード",
+      "note": "無料。テニスネットとサッカーゴールのライン入り。",
+      "source": "https://fujimino-park-sports.com/undoukouen/"
+    },
+    {
+      "name": "福岡中央公園 ボール遊びゾーン",
+      "note": "午前10時〜午後5時30分。やわらかいボールのみ・バット不可。こどもと同伴者向けのゾーンで、スポーツの練習は不可。",
+      "source": "https://www.city.fujimino.saitama.jp/soshikiichiran/kosodateshienka/kosodateshiengakari/13395.html"
+    }
+  ]
 }

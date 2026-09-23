@@ -265,9 +265,9 @@ footer{margin-top:36px;font-size:12px;color:var(--ink-3);border-top:1px solid va
 </div>
 
 <section class="g">
-  <div class="sec-h"><h2 class="disp">お金をかけずに蹴れる場所</h2><p>自治体が「ボール遊びOK」と明記している広場。ゴールはないか、あっても小さめ。</p></div>
+  <div class="sec-h"><h2 class="disp">お金をかけずにボールを使える場所</h2><p>予約なし・無料で使える場所。市や指定管理者の公式ページで確認できたものだけ。</p></div>
   <div class="parks" id="parks"><p class="note">準備中: 市の公園ページで確認できた場所だけを載せます。</p></div>
-  <p class="note">このリストは市のボール遊びルールのページをもとに手で集めています。看板の表示が最優先です。</p>
+  <p class="note">このリストは市・指定管理者の公式ページをもとに手で集めています。現地の看板の表示が最優先です。</p>
 </section>
 
 <section class="how">
@@ -374,7 +374,8 @@ function select(f, i, c, btn) {
   kv.hidden = false;
   const fee = f.feeNote && f.feeNote !== "要確認" ? f.feeNote : "要確認(公式ページ参照)";
   const teen = f.teenNote && f.teenNote !== "要確認" ? f.teenNote : "要確認(公式ページ参照)";
-  kv.innerHTML = `<dt>料金の目安</dt><dd>${fee}</dd><dt>中高生だけで</dt><dd>${teen}</dd>`;
+  const booking = f.bookingNote ? `<dt>予約の仕組み</dt><dd>${f.bookingNote}</dd>` : "";
+  kv.innerHTML = `<dt>料金の目安</dt><dd>${fee}</dd><dt>中高生だけで</dt><dd>${teen}</dd>${booking}`;
   const ch = $("#d-chips");
   ch.innerHTML = "";
   const chip = (t, w) => { const s = document.createElement("span"); s.className = "chip" + (w ? " warn" : ""); s.textContent = t; ch.appendChild(s); };

@@ -37,14 +37,15 @@ jobs:
           npm install playwright
           npx playwright install --with-deps chromium
 
+      # push時は取得せず配信のみ(市サイトへのアクセスは cron の1時間1回だけに保つ)
       - name: 空き状況を取得
-        if: vars.SCRAPE_ENABLED == 'true'
+        if: vars.SCRAPE_ENABLED == 'true' && github.event_name != 'push'
         env:
           SCRAPE_MODE: ${{ vars.SCRAPE_MODE || 'api' }}
         run: node scraper/scrape.mjs
 
       - name: 変更があればコミット
-        if: vars.SCRAPE_ENABLED == 'true'
+        if: vars.SCRAPE_ENABLED == 'true' && github.event_name != 'push'
         run: |
           if ! git diff --quiet data/availability.json; then
             git config user.name "minna-no-court-bot"
