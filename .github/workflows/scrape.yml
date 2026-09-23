@@ -59,8 +59,9 @@ jobs:
 
       - name: サイトを組み立て
         run: |
+          mkdir -p _site
+          cp -R site/. _site/
           mkdir -p _site/data
-          cp site/index.html _site/
           cp data/availability.json _site/data/
           cp scraper/parks.json _site/data/
 
