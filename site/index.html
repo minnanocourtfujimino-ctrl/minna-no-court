@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>みんなのコート</title>
+<meta name="description" content="ふじみ野市の公共スポーツ施設の空き状況を一画面で。非公式サイトです。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=BIZ+UDPGothic:wght@400;700&family=Barlow+Condensed:wght@500;700&display=swap">
+<style>
+:root{
+  --ground:#F2F5EC;
+  --paper:#FFFFFF;
+  --ink:#17261B;
+  --ink-2:#4B5A4F;
+  --ink-3:#8A968D;
+  --line:#D5DDD1;
+  --turf:#2E7D4F;
+  --turf-deep:#1F5C39;
+  --turf-soft:#DDEFE2;
+  --cone:#F26B1D;
+  --cone-soft:#FFE6D6;
+  --ok:#2E7D4F; --ok-bg:#DDEFE2;
+  --few:#C98A00; --few-bg:#FFF1C9;
+  --full:#9AA39C; --full-bg:#E7EBE5;
+  --lot:#5B6FB5; --lot-bg:#E3E8F7;
+  --shadow:0 8px 24px rgba(23,38,27,.10);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#101A13; --paper:#182419; --ink:#EEF3EC; --ink-2:#B7C4BA; --ink-3:#7C8A7F;
+    --line:#2B3A2E; --turf:#5FB57F; --turf-deep:#7ED09A; --turf-soft:#1E3A28;
+    --cone:#FF8A45; --cone-soft:#3A2416;
+    --ok:#6DC48C; --ok-bg:#1E3A28; --few:#F0B83A; --few-bg:#3A2E10; --full:#6E7A71; --full-bg:#22302A; --lot:#93A5E8; --lot-bg:#222C45;
+    --shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101A13; --paper:#182419; --ink:#EEF3EC; --ink-2:#B7C4BA; --ink-3:#7C8A7F;
+  --line:#2B3A2E; --turf:#5FB57F; --turf-deep:#7ED09A; --turf-soft:#1E3A28;
+  --cone:#FF8A45; --cone-soft:#3A2416;
+  --ok:#6DC48C; --ok-bg:#1E3A28; --few:#F0B83A; --few-bg:#3A2E10; --full:#6E7A71; --full-bg:#22302A; --lot:#93A5E8; --lot-bg:#222C45;
+  --shadow:0 8px 24px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"BIZ UDPGothic","Hiragino Sans","Noto Sans JP",sans-serif;font-size:15px;line-height:1.7}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:0 64px}
+h1,h2,h3{margin:0;text-wrap:balance}
+.disp{font-family:"Dela Gothic One","BIZ UDPGothic",sans-serif;font-weight:400}
+.num{font-family:"Barlow Condensed","BIZ UDPGothic",sans-serif;font-variant-numeric:tabular-nums}
+a{color:var(--turf-deep)}
+button{font:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--cone);outline-offset:2px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--ground);border-bottom:1px solid var(--line)}
+.top .in{max-width:1040px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.logo .mark{width:34px;height:34px;border-radius:50%;background:var(--turf);position:relative;flex:none}
+.logo .mark::after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid #fff;box-sizing:border-box;clip-path:polygon(0 42%,100% 42%,100% 58%,0 58%)}
+.logo .name{font-size:22px;letter-spacing:.02em}
+.logo .tag{font-size:12px;color:var(--ink-2)}
+.area{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
+
+/* hero */
+.hero{padding-block:36px 20px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:end}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.25}
+.hero h1 em{font-style:normal;color:var(--turf)}
+.hero p{margin:12px 0 0;max-width:34em;color:var(--ink-2)}
+.hero .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fact{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--paper)}
+.fact .v{font-size:30px;line-height:1;color:var(--turf)}
+.fact .k{font-size:12px;color:var(--ink-2);margin-top:6px}
+@media (max-width:720px){.hero{grid-template-columns:1fr}.hero .facts{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:420px){.hero .facts{grid-template-columns:1fr 1fr}}
+
+/* controls */
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--paper);padding:3px}
+.seg button{border:0;background:transparent;color:var(--ink-2);padding:6px 14px;border-radius:999px;font-size:14px}
+.seg button[aria-pressed="true"]{background:var(--turf);color:#fff}
+.legend{margin-left:auto;display:flex;gap:12px;font-size:12px;color:var(--ink-2);flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+.datasrc{font-size:12px;color:var(--ink-3);margin:10px 0 0}
+
+/* grid */
+.board{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.board .scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{padding:0;border-bottom:1px solid var(--line)}
+thead th{font-weight:500;font-size:14px;color:var(--ink-2);padding:10px 8px;text-align:center;background:var(--ground)}
+thead th:first-child{text-align:left;padding-left:14px}
+tbody th{text-align:left;font-weight:700;padding:10px 14px;width:240px;min-width:200px;vertical-align:middle}
+@media (max-width:480px){tbody th{min-width:150px;width:150px;padding:10px 10px}}
+tbody th small{display:block;font-weight:400;font-size:12px;color:var(--ink-2)}
+tbody th .kind{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);margin-left:6px;vertical-align:1px}
+td{text-align:center;vertical-align:middle;padding:6px 4px}
+.strip{display:flex;gap:6px;padding:2px 6px}
+.slot{min-width:64px;height:48px;border:0;border-radius:8px;font-size:13px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transition:transform .08s;flex:none}
+.slot:hover{transform:translateY(-1px)}
+.slot .t{font-size:10px;font-weight:400;opacity:.75;line-height:1.2}
+.slot.ok{background:var(--ok-bg);color:var(--ok)}
+.slot.few{background:var(--few-bg);color:var(--few)}
+.slot.full{background:var(--full-bg);color:var(--full);cursor:default}
+.slot.lot{background:var(--lot-bg);color:var(--lot)}
+.slot.na{background:transparent;color:var(--ink-3);cursor:default;border:1px dashed var(--line);font-weight:400}
+.slot.sel{outline:3px solid var(--cone);outline-offset:-3px}
+.rownote{font-size:12px;color:var(--ink-3);padding:8px 12px;text-align:left}
+
+/* detail */
+.detail{margin-top:14px;display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
+@media (max-width:720px){.detail{grid-template-columns:1fr}}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+.panel h2{font-size:18px}
+.panel .sub{color:var(--ink-2);font-size:13px;margin:4px 0 12px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.kv dt{color:var(--ink-2)}
+.kv dd{margin:0}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-size:12px;padding:2px 9px;border-radius:999px;background:var(--turf-soft);color:var(--turf-deep)}
+.chip.warn{background:var(--cone-soft);color:var(--cone)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.btn{border:1px solid var(--turf);background:var(--turf);color:#fff;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.ghost{background:transparent;color:var(--turf-deep)}
+.btn.cone{background:var(--cone);border-color:var(--cone);color:#fff}
+.btn[aria-disabled="true"]{opacity:.55;cursor:default;pointer-events:none}
+.split{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-top:10px}
+.split input[type=range]{width:100%;accent-color:var(--cone)}
+.split .per{font-size:40px;line-height:1;color:var(--cone)}
+.split .per small{font-size:14px;color:var(--ink-2);font-family:"BIZ UDPGothic",sans-serif}
+.note{font-size:12px;color:var(--ink-3);margin-top:10px}
+
+/* sections */
+section.g{margin-top:36px}
+.sec-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.sec-h h2{font-size:22px}
+.sec-h p{margin:0;color:var(--ink-2);font-size:14px}
+
+/* parks */
+.parks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.park{border-left:4px solid var(--turf);background:var(--paper);border-radius:0 12px 12px 0;padding:10px 12px;font-size:14px}
+.park b{display:block}
+.park span{color:var(--ink-2);font-size:12px}
+
+/* how */
+.how{margin-top:40px;background:var(--turf-deep);color:#fff;border-radius:16px;padding:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+:root[data-theme="dark"] .how{background:#1E3A28}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .how{background:#1E3A28}}
+@media (max-width:720px){.how{grid-template-columns:1fr}}
+.how h3{font-size:16px;margin-bottom:6px}
+.how p{margin:0;font-size:14px;opacity:.9}
+.how .step{font-size:12px;letter-spacing:.12em;opacity:.7;margin-bottom:8px}
+footer{margin-top:32px;font-size:12px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="in">
+  <a class="logo" href="#"><span class="mark"></span><span><span class="disp name">みんなのコート</span><br><span class="tag">ふじみ野の公共コート、今日どこ空いてる?</span></span></a>
+  <div class="area"><span>エリア: ふじみ野市</span></div>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+  <div>
+    <h1 class="disp">公園はボール禁止。<br>でも<em>蹴れる場所</em>は、ある。</h1>
+    <p>市の運動公園から体育館まで、近所で本格的なゴールを使える場所の空き枠をひとつの表にまとめました。空いてる枠を見つけたら、そのまま市の公式予約ページへ。</p>
+  </div>
+  <div class="facts">
+    <div class="fact"><div class="num v" id="f-fac">—</div><div class="k">掲載施設(ふじみ野市)</div></div>
+    <div class="fact"><div class="num v" id="f-open">—</div><div class="k">今日空いている枠</div></div>
+    <div class="fact"><div class="num v" id="f-upd">—</div><div class="k">最終更新</div></div>
+  </div>
+</section>
+
+<div class="controls">
+  <div class="seg" role="group" aria-label="日付" id="dayseg"></div>
+  <div class="seg" role="group" aria-label="種目" id="sportseg">
+    <button type="button" data-sport="all" aria-pressed="true">すべて</button>
+    <button type="button" data-sport="soccer" aria-pressed="false">サッカー</button>
+    <button type="button" data-sport="futsal" aria-pressed="false">フットサル</button>
+    <button type="button" data-sport="basketball" aria-pressed="false">バスケ</button>
+  </div>
+  <div class="legend"><span><i style="background:var(--ok-bg);border:1px solid var(--ok)"></i>空き</span><span><i style="background:var(--few-bg);border:1px solid var(--few)"></i>残りわずか</span><span><i style="background:var(--lot-bg);border:1px solid var(--lot)"></i>抽選受付中</span><span><i style="background:var(--full-bg);border:1px solid var(--full)"></i>埋まってる</span><span><i style="border:1px dashed var(--line)"></i>受付外・休館</span></div>
+</div>
+
+<div class="board"><div class="scroll">
+<table id="grid">
+  <thead><tr><th>施設</th><th style="text-align:left;padding-left:10px">空き枠(タップで詳細)</th></tr></thead>
+  <tbody id="rows"><tr><td colspan="2" class="rownote">読み込み中…</td></tr></tbody>
+</table>
+</div></div>
+<p class="datasrc" id="datasrc">データ元: <a href="https://yoyacool.e-harp.jp/fujimino" target="_blank" rel="noopener">ふじみ野市公共施設予約システム</a>(非公式) · 最終更新 <span id="upd-inline">—</span> · 空き状況は目安です。予約前に必ず公式で確認してください。</p>
+
+<div class="detail">
+  <div class="panel" id="dpanel">
+    <h2 id="d-name">枠をタップすると詳細が出ます</h2>
+    <p class="sub" id="d-sub">料金の目安、中高生だけで借りられるか、予約の入口。</p>
+    <dl class="kv" id="d-kv" hidden></dl>
+    <div class="chips" id="d-chips" style="margin-top:10px"></div>
+    <div class="btnrow" id="d-btns" hidden>
+      <a class="btn" id="d-link" href="#" target="_blank" rel="noopener">市の公式予約ページへ ↗</a>
+      <a class="btn cone" id="d-line" href="#" target="_blank" rel="noopener">この枠で一緒に蹴りたい人はこちら</a>
+    </div>
+    <p class="note" id="d-note" hidden>予約と支払いは市の公式システムで行います。みんなのコートは空き状況の表示だけを担当します。表示は目安なので、予約前に必ず公式ページで確認してください。</p>
+  </div>
+  <div class="panel">
+    <h2>ひとり分はいくら?</h2>
+    <p class="sub">コート代を人数で割ると、公園の代わりになる値段かどうかが見えます。</p>
+    <div class="kv"><dt>枠の料金</dt><dd id="s-total" style="font-size:16px">—</dd></div>
+    <div class="split">
+      <div><label for="ppl" style="font-size:13px;color:var(--ink-2)">人数 <b id="ppl-v">10</b>人</label><input type="range" id="ppl" min="4" max="16" value="10"></div>
+      <div class="num per" id="s-per">—<small>円/人</small></div>
+    </div>
+    <p class="note">料金は施設の公式ページで確認してください。市外の人が半数を超えると、市の施設は料金が2倍になる決まりがあります(ふじみ野市)。</p>
+  </div>
+</div>
+
+<section class="g">
+  <div class="sec-h"><h2 class="disp">お金をかけずに蹴れる場所</h2><p>自治体が「ボール遊びOK」と明記している広場。ゴールはないか、あっても小さめ。</p></div>
+  <div class="parks" id="parks"><p class="note">準備中: 市の公園ページで確認できた場所だけを載せます。</p></div>
+  <p class="note">このリストは市のボール遊びルールのページをもとに手で集めています。看板の表示が最優先です。</p>
+</section>
+
+<section class="how">
+  <div><div class="step num">STEP 1</div><h3>空きを見る</h3><p>市の予約システムは「空き状況の照会だけならログイン不要」なので、それをまとめて表示します。</p></div>
+  <div><div class="step num">STEP 2</div><h3>施設で予約する</h3><p>予約と支払いは市の公式ページで。中高生だけの団体でも、15歳以上(中学生を除く)の代表者がいれば利用者登録できます。</p></div>
+  <div><div class="step num">STEP 3</div><h3>人を集める</h3><p>人数が足りなければ、LINEオープンチャットで同じ中高生を募集(準備中)。連絡先の交換はなし、集合は施設の入口。</p></div>
+</section>
+
+<footer id="foot">みんなのコートは<b>非公式</b>の個人運営サイトです。空き状況は目安であり、正確な情報は<a href="https://yoyacool.e-harp.jp/fujimino" target="_blank" rel="noopener">ふじみ野市公共施設予約システム</a>で確認してください。データは同システムから1時間に1回取得しています。</footer>
+</main>
+
+<script>
+// LINE オープンチャットの URL(用意でき次第ここに入れる)
+const LINE_OPENCHAT_URL = "";
+
+const $ = s => document.querySelector(s);
+const STXT = { o: "空き", f: "わずか", x: "—", l: "抽選", "-": "" };
+const SCLS = { o: "ok", f: "few", x: "full", l: "lot", "-": "na" };
+const WD = ["日", "月", "火", "水", "木", "金", "土"];
+
+let DATA = null;
+let day = 0, sport = "all", sel = null;
+
+function dayLabel(iso, i) {
+  const [y, m, d] = iso.split("-").map(Number);
+  const wd = WD[new Date(y, m - 1, d).getDay()];
+  const md = `${m}/${d}(${wd})`;
+  return i === 0 ? `今日 ${md}` : i === 1 ? `明日 ${md}` : md;
+}
+
+function renderDays() {
+  const seg = $("#dayseg");
+  seg.innerHTML = "";
+  DATA.days.forEach((iso, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.dataset.day = i;
+    b.setAttribute("aria-pressed", i === day);
+    b.textContent = dayLabel(iso, i);
+    seg.appendChild(b);
+  });
+}
+
+function render() {
+  const rows = $("#rows");
+  rows.innerHTML = "";
+  const date = DATA.days[day];
+  DATA.facilities
+    .filter(f => sport === "all" || (f.sports || []).includes(sport))
+    .forEach(f => {
+      const tr = document.createElement("tr");
+      const th = document.createElement("th");
+      const addr = f.address && f.address !== "要確認" ? `<small>${f.address}</small>` : "";
+      th.innerHTML = `${f.name}<span class="kind">${f.kind}</span>${addr}`;
+      tr.appendChild(th);
+      const td = document.createElement("td");
+      const st = (f.availability || {})[date] || [];
+      if (!f.slots || f.slots.length === 0 || st.length === 0) {
+        td.innerHTML = `<div class="rownote">取得できませんでした。<a href="${f.bookingUrl}" target="_blank" rel="noopener">公式ページで確認 ↗</a></div>`;
+      } else {
+        const strip = document.createElement("div");
+        strip.className = "strip";
+        f.slots.forEach((slot, i) => {
+          const c = st[i] || "-";
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "slot " + (SCLS[c] || "na");
+          b.innerHTML = `<span class="t">${slot.label}</span>${STXT[c] ?? ""}`;
+          if (c === "o" || c === "f" || c === "l") {
+            b.addEventListener("click", () => select(f, i, c, b));
+          } else {
+            b.disabled = true;
+          }
+          if (sel && sel.f.id === f.id && sel.i === i && sel.date === date) b.classList.add("sel");
+          strip.appendChild(b);
+        });
+        td.appendChild(strip);
+      }
+      tr.appendChild(td);
+      rows.appendChild(tr);
+    });
+
+  // 今日空いている枠(o と f を数える)
+  const today = DATA.days[0];
+  let open = 0;
+  DATA.facilities.forEach(f => {
+    ((f.availability || {})[today] || []).forEach(c => { if (c === "o" || c === "f") open++; });
+  });
+  $("#f-open").textContent = open;
+  $("#f-fac").textContent = DATA.facilities.length;
+}
+
+function select(f, i, c, btn) {
+  const date = DATA.days[day];
+  sel = { f, i, c, date };
+  document.querySelectorAll(".slot.sel").forEach(x => x.classList.remove("sel"));
+  btn.classList.add("sel");
+  $("#d-name").textContent = f.name;
+  const slot = f.slots[i];
+  $("#d-sub").textContent = `${dayLabel(date, day)} ${slot.label}(${slot.start}〜${slot.end})` + (f.address && f.address !== "要確認" ? ` · ${f.address}` : "");
+  const kv = $("#d-kv");
+  kv.hidden = false;
+  const fee = f.feeNote && f.feeNote !== "要確認" ? f.feeNote : "要確認(公式ページ参照)";
+  const teen = f.teenNote && f.teenNote !== "要確認" ? f.teenNote : "要確認(公式ページ参照)";
+  kv.innerHTML = `<dt>料金の目安</dt><dd>${fee}</dd><dt>中高生だけで</dt><dd>${teen}</dd>`;
+  const ch = $("#d-chips");
+  ch.innerHTML = "";
+  const chip = (t, w) => { const s = document.createElement("span"); s.className = "chip" + (w ? " warn" : ""); s.textContent = t; ch.appendChild(s); };
+  chip(c === "o" ? "空きあり" : c === "f" ? "残りわずか" : "抽選受付中");
+  chip("市の施設");
+  chip("予約には利用者登録が必要", true);
+  $("#d-btns").hidden = false;
+  $("#d-note").hidden = false;
+  $("#d-link").href = f.bookingUrl;
+  $("#d-link").textContent = c === "l" ? "抽選に申し込む ↗" : "市の公式予約ページへ ↗";
+  const line = $("#d-line");
+  if (LINE_OPENCHAT_URL) {
+    line.href = LINE_OPENCHAT_URL;
+    line.removeAttribute("aria-disabled");
+  } else {
+    line.href = "#";
+    line.setAttribute("aria-disabled", "true");
+    line.textContent = "一緒に蹴る人の募集(準備中)";
+  }
+  split();
+  $("#dpanel").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function split() {
+  const n = +$("#ppl").value;
+  $("#ppl-v").textContent = n;
+  if (!sel) { $("#s-total").textContent = "—"; $("#s-per").innerHTML = "—<small>円/人</small>"; return; }
+  const f = sel.f;
+  if (typeof f.fee === "number") {
+    $("#s-total").textContent = "¥" + f.fee.toLocaleString();
+    $("#s-per").innerHTML = Math.ceil(f.fee / n).toLocaleString() + "<small>円/人</small>";
+  } else {
+    $("#s-total").textContent = f.feeNote && f.feeNote !== "要確認" ? f.feeNote : "要確認";
+    $("#s-per").innerHTML = "—<small>円/人</small>";
+  }
+}
+
+function renderParks(parks) {
+  if (!parks || parks.length === 0) return;
+  const w = $("#parks");
+  w.innerHTML = "";
+  parks.forEach(p => {
+    const d = document.createElement("div");
+    d.className = "park";
+    d.innerHTML = `<b>${p.name}</b><span>${p.note || ""}</span>`;
+    w.appendChild(d);
+  });
+}
+
+function showError(msg) {
+  $("#rows").innerHTML = `<tr><td colspan="2" class="rownote">${msg}</td></tr>`;
+}
+
+async function init() {
+  try {
+    const res = await fetch("./data/availability.json", { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    DATA = await res.json();
+  } catch (e) {
+    showError("空き状況データを読み込めませんでした。時間をおいて再読み込みしてください。");
+    return;
+  }
+  const t = (DATA.generatedAt || "").slice(11, 16);
+  $("#f-upd").textContent = t || "—";
+  $("#upd-inline").textContent = t ? `${(DATA.generatedAt || "").slice(5, 10).replace("-", "/")} ${t}` : "—";
+  renderDays();
+  render();
+  if (DATA.errors && DATA.errors.length > 0) {
+    const names = DATA.errors.map(e => (DATA.facilities.find(f => f.id === e.facilityId) || {}).name || e.facilityId);
+    $("#datasrc").insertAdjacentHTML("beforeend", `<br>⚠ 一部の施設(${names.join("、")})の取得に失敗しています。`);
+  }
+  try {
+    const res = await fetch("./data/parks.json", { cache: "no-store" });
+    if (res.ok) renderParks((await res.json()).parks);
+  } catch {}
+}
+
+$("#dayseg").addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  day = +b.dataset.day;
+  [...e.currentTarget.children].forEach(x => x.setAttribute("aria-pressed", x === b));
+  sel = null;
+  render();
+});
+$("#sportseg").addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  sport = b.dataset.sport;
+  [...e.currentTarget.children].forEach(x => x.setAttribute("aria-pressed", x === b));
+  render();
+});
+$("#ppl").addEventListener("input", split);
+
+init();
+</script>
+</body>
+</html>

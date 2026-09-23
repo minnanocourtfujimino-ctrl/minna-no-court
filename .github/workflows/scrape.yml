@@ -1,0 +1,78 @@
+name: scrape
+
+# 毎時、空き状況を取得して GitHub Pages にデプロイする。
+# 停止方法: リポジトリ変数 SCRAPE_ENABLED を false にすると取得が止まる。
+# 予備方式: リポジトリ変数 SCRAPE_MODE を browser にすると Playwright 経由に切り替わる。
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**", "scraper/parks.json"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Playwright を準備(browser モード時のみ)
+        if: vars.SCRAPE_MODE == 'browser'
+        working-directory: scraper
+        run: |
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: 空き状況を取得
+        if: vars.SCRAPE_ENABLED == 'true'
+        env:
+          SCRAPE_MODE: ${{ vars.SCRAPE_MODE || 'api' }}
+        run: node scraper/scrape.mjs
+
+      - name: 変更があればコミット
+        if: vars.SCRAPE_ENABLED == 'true'
+        run: |
+          if ! git diff --quiet data/availability.json; then
+            git config user.name "minna-no-court-bot"
+            git config user.email "minnanocourtfujimino@gmail.com"
+            git add data/availability.json
+            git commit -m "data: 空き状況を更新"
+            git push
+          else
+            echo "変化なし: コミットしない"
+          fi
+
+      - name: サイトを組み立て
+        run: |
+          mkdir -p _site/data
+          cp site/index.html _site/
+          cp data/availability.json _site/data/
+          cp scraper/parks.json _site/data/
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: scrape
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

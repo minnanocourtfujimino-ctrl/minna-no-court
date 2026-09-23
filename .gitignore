@@ -5,3 +5,6 @@ demo_*.html
 
 node_modules/
 .DS_Store
+
+# ローカルプレビュー用コピー(本番はworkflowが配置)
+site/data/
