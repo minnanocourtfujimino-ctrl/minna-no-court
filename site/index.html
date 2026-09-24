@@ -147,6 +147,7 @@ td{text-align:center;vertical-align:middle;padding:8px 4px}
   transition:transform .1s, box-shadow .1s;
 }
 .slot .t{font-family:"Barlow Condensed","BIZ UDPGothic",sans-serif;font-variant-numeric:tabular-nums;font-size:11px;font-weight:500;opacity:.8;line-height:1.1;letter-spacing:.03em}
+.slot .g{font-size:9.5px;font-weight:700;color:var(--cone);line-height:1.1}
 .slot.ok{background:var(--ok-bg);color:var(--ok);border-color:rgba(46,125,79,.28)}
 .slot.few{background:var(--few-bg);color:var(--few);border-color:rgba(201,138,0,.30)}
 .slot.lot{background:var(--lot-bg);color:var(--lot);border-color:rgba(91,111,181,.30)}
@@ -190,6 +191,21 @@ section.g{margin-top:40px}
 .sec-h h2{font-size:22px;position:relative;padding-left:14px}
 .sec-h h2::before{content:"";position:absolute;left:0;top:.18em;bottom:.18em;width:5px;border-radius:99px;background:var(--cone)}
 .sec-h p{margin:0;color:var(--ink-2);font-size:14px}
+
+/* 参加リスト */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-s)}
+.card .when{font-size:26px;line-height:1;color:var(--ink)}
+.card .when small{font-size:13px;color:var(--ink-2);font-family:"BIZ UDPGothic",sans-serif;margin-left:6px}
+.card .where{font-weight:700}
+.card .meta{font-size:12px;color:var(--ink-2)}
+.bar{height:8px;border-radius:999px;background:var(--full-bg);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--turf);border-radius:999px;transition:width .3s}
+.card .cnt{display:flex;justify-content:space-between;font-size:13px;align-items:baseline}
+.card .cnt b{font-size:18px}
+.card .join{margin-top:auto;border:1px solid var(--turf);background:transparent;color:var(--turf-deep);border-radius:10px;padding:8px;font-weight:700;text-align:center;text-decoration:none}
+.card .join[aria-disabled="true"]{border-color:var(--line);color:var(--ink-3);pointer-events:none}
+.card .caution{font-size:11px;color:var(--ink-3);margin:0;line-height:1.6}
 
 /* parks */
 .parks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
@@ -256,7 +272,7 @@ footer{margin-top:36px;font-size:12px;color:var(--ink-3);border-top:1px solid va
     <div class="chips" id="d-chips" style="margin-top:10px"></div>
     <div class="btnrow" id="d-btns" hidden>
       <a class="btn" id="d-link" href="#" target="_blank" rel="noopener">市の公式予約ページへ ↗</a>
-      <a class="btn cone" id="d-line" href="#" target="_blank" rel="noopener">この枠で一緒に蹴りたい人はこちら</a>
+      <a class="btn cone" id="d-join" href="#" target="_blank" rel="noopener">この枠の参加リストに入る</a>
     </div>
     <p class="note" id="d-note" hidden>予約と支払いは市の公式システムで行います。みんなのコートは空き状況の表示だけを担当します。表示は目安なので、予約前に必ず公式ページで確認してください。</p>
   </div>
@@ -273,6 +289,12 @@ footer{margin-top:36px;font-size:12px;color:var(--ink-3);border-top:1px solid va
 </div>
 
 <section class="g">
+  <div class="sec-h"><h2 class="disp">参加リスト</h2><p>空いてる枠に、チャットなしで集まる仕組み。集合は施設の入口、当日その場で解散。</p></div>
+  <div class="cards" id="gcards"></div>
+  <p class="note" id="gnote"></p>
+</section>
+
+<section class="g">
   <div class="sec-h"><h2 class="disp">お金をかけずにボールを使える場所</h2><p>予約なし・無料で使える場所。市や指定管理者の公式ページで確認できたものだけ。</p></div>
   <div class="parks" id="parks"><p class="note">準備中: 市の公園ページで確認できた場所だけを載せます。</p></div>
   <p class="note">このリストは市・指定管理者の公式ページをもとに手で集めています。現地の看板の表示が最優先です。</p>
@@ -281,15 +303,56 @@ footer{margin-top:36px;font-size:12px;color:var(--ink-3);border-top:1px solid va
 <section class="how">
   <div><div class="step num">STEP 1</div><h3>空きを見る</h3><p>市の予約システムは「空き状況の照会だけならログイン不要」なので、それをまとめて表示します。</p></div>
   <div><div class="step num">STEP 2</div><h3>施設で予約する</h3><p>予約と支払いは市の公式ページで。中高生だけの団体でも、15歳以上(中学生を除く)の代表者がいれば利用者登録できます。</p></div>
-  <div><div class="step num">STEP 3</div><h3>人を集める</h3><p>人数が足りなければ、LINEオープンチャットで同じ中高生を募集(準備中)。連絡先の交換はなし、集合は施設の入口。</p></div>
+  <div><div class="step num">STEP 3</div><h3>人を集める</h3><p>人数が足りなければ、参加リストで同じ中高生を募集。チャットも連絡先の交換もなし。集合は施設の入口、当日その場で解散。</p></div>
 </section>
 
 <footer id="foot">みんなのコートは<b>非公式</b>の個人運営サイトです。空き状況は目安であり、正確な情報は<a href="https://yoyacool.e-harp.jp/fujimino" target="_blank" rel="noopener">ふじみ野市公共施設予約システム</a>で確認してください。データは同システムから1時間に1回取得しています。</footer>
 </main>
 
 <script>
-// LINE オープンチャットの URL
-const LINE_OPENCHAT_URL = "https://line.me/ti/g2/1Tn-shrLf0wz3BNCl-F8rE78OMxa8s-0jBqzGA";
+// 参加リスト(Googleフォーム連携)の設定。依頼者からID類が届いたらここを埋めると有効になる。
+// formUrl:   https://docs.google.com/forms/d/e/<FORM_ID>/viewform
+// entrySlot: 枠キー用の隠し項目の entry.XXXXXXXXX
+// sheetId:   ウェブに公開した回答スプレッドシートのID
+const PARTICIPATION = {
+  formUrl: "",
+  entrySlot: "",
+  sheetId: "",
+  sheetName: "フォームの回答 1",
+  defaultCapacity: 10,
+};
+const PART_ENABLED = Boolean(PARTICIPATION.formUrl && PARTICIPATION.entrySlot && PARTICIPATION.sheetId);
+const CAUTION = "当日その場で解散します。個人情報の交換や、二人きりで会う約束はしないでください。";
+let PART_COUNTS = {}; // 枠キー → 参加人数
+
+function slotKey(facId, date, label) {
+  return `${facId}_${date}_${label}`;
+}
+function joinUrl(key) {
+  return `${PARTICIPATION.formUrl}?usp=pp_url&${PARTICIPATION.entrySlot}=${encodeURIComponent(key)}`;
+}
+function capacityOf(f) {
+  return typeof f.capacity === "number" ? f.capacity : PARTICIPATION.defaultCapacity;
+}
+
+// 公開スプレッドシートから参加人数を数える(学年・ニックネームは読み飛ばし、枠キーの列だけ拾う)
+async function fetchCounts() {
+  if (!PART_ENABLED) return {};
+  const url = `https://docs.google.com/spreadsheets/d/${PARTICIPATION.sheetId}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(PARTICIPATION.sheetName)}`;
+  const txt = await (await fetch(url)).text();
+  const json = JSON.parse(txt.slice(txt.indexOf("(") + 1, txt.lastIndexOf(")")));
+  const counts = {};
+  for (const r of json.table.rows || []) {
+    for (const c of r.c || []) {
+      const v = c && typeof c.v === "string" ? c.v.trim() : null;
+      if (v && /^[a-z0-9-]+_\d{4}-\d{2}-\d{2}_.+$/i.test(v)) {
+        counts[v] = (counts[v] || 0) + 1;
+        break;
+      }
+    }
+  }
+  return counts;
+}
 
 const $ = s => document.querySelector(s);
 const STXT = { o: "空き", f: "わずか", x: "—", l: "抽選", "-": "" };
@@ -345,6 +408,9 @@ function render() {
           b.type = "button";
           b.className = "slot " + (SCLS[c] || "na");
           b.innerHTML = `<span class="t">${slot.label}</span>${STXT[c] ?? ""}`;
+          if (PART_ENABLED && (c === "o" || c === "f" || c === "l") && PART_COUNTS[slotKey(f.id, date, slot.label)] > 0) {
+            b.innerHTML += `<span class="g">募集中</span>`;
+          }
           b.setAttribute("aria-label", `${slot.label} ${SNAME[c] || ""}`);
           if (c === "o" || c === "f" || c === "l") {
             b.addEventListener("click", () => select(f, i, c, b));
@@ -394,14 +460,24 @@ function select(f, i, c, btn) {
   $("#d-note").hidden = false;
   $("#d-link").href = f.bookingUrl;
   $("#d-link").textContent = c === "l" ? "抽選に申し込む ↗" : "市の公式予約ページへ ↗";
-  const line = $("#d-line");
-  if (LINE_OPENCHAT_URL) {
-    line.href = LINE_OPENCHAT_URL;
-    line.removeAttribute("aria-disabled");
+  const join = $("#d-join");
+  if (PART_ENABLED) {
+    const key = slotKey(f.id, date, slot.label);
+    const n = PART_COUNTS[key] || 0;
+    const cap = capacityOf(f);
+    if (n >= cap) {
+      join.href = "#";
+      join.setAttribute("aria-disabled", "true");
+      join.textContent = `参加リストは満員(${n}/${cap}人)`;
+    } else {
+      join.href = joinUrl(key);
+      join.removeAttribute("aria-disabled");
+      join.textContent = n > 0 ? `この枠の参加リストに入る(いま${n}人)` : "この枠の参加リストに入る";
+    }
   } else {
-    line.href = "#";
-    line.setAttribute("aria-disabled", "true");
-    line.textContent = "一緒に蹴る人の募集(準備中)";
+    join.href = "#";
+    join.setAttribute("aria-disabled", "true");
+    join.textContent = "参加リスト(準備中)";
   }
   split();
   $("#dpanel").scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -418,6 +494,47 @@ function split() {
   } else {
     $("#s-total").textContent = f.feeNote && f.feeNote !== "要確認" ? f.feeNote : "要確認";
     $("#s-per").innerHTML = "—<small>円/人</small>";
+  }
+}
+
+function renderGatherings() {
+  const wrap = $("#gcards");
+  const note = $("#gnote");
+  wrap.innerHTML = "";
+  if (!PART_ENABLED) {
+    note.textContent = "参加リスト(準備中): チャットなしで「この枠で一緒にやる人」を集められる仕組みを準備しています。";
+    return;
+  }
+  const entries = [];
+  for (const [key, n] of Object.entries(PART_COUNTS)) {
+    const m = key.match(/^(.+)_(\d{4}-\d{2}-\d{2})_(.+)$/);
+    if (!m) continue;
+    const [, facId, date, label] = m;
+    if (!DATA.days.includes(date)) continue; // 過去・範囲外の枠は出さない
+    const f = DATA.facilities.find(x => x.id === facId);
+    if (!f) continue;
+    entries.push({ key, n, f, date, label });
+  }
+  entries.sort((a, b) => a.date.localeCompare(b.date) || a.label.localeCompare(b.label));
+  if (entries.length === 0) {
+    note.textContent = "いまはまだ募集がありません。空いている枠をタップして「参加リストに入る」を押すと、ここに並びます。";
+    return;
+  }
+  note.textContent = "参加は人数として表示されます(反映まで数分かかることがあります)。予定が変わったら参加しないでください。";
+  for (const e of entries) {
+    const cap = capacityOf(e.f);
+    const full = e.n >= cap;
+    const dl = dayLabel(e.date, DATA.days.indexOf(e.date));
+    const d = document.createElement("div");
+    d.className = "card";
+    d.innerHTML = `<div class="num when">${e.label}<small>${dl}</small></div>
+      <div class="where">${e.f.name}</div>
+      <div class="meta">集合: 施設の入口 · 現地解散</div>
+      <div class="cnt"><span><b class="num">${e.n}</b> / ${cap}人</span><span>${full ? "満員" : "あと" + (cap - e.n) + "人"}</span></div>
+      <div class="bar"><i style="width:${Math.min(100, (e.n / cap) * 100)}%"></i></div>
+      <a class="join" ${full ? 'aria-disabled="true"' : `href="${joinUrl(e.key)}" target="_blank" rel="noopener"`}>${full ? "定員に達しました" : "参加する"}</a>
+      <p class="caution">${CAUTION}</p>`;
+    wrap.appendChild(d);
   }
 }
 
@@ -451,6 +568,14 @@ async function init() {
   $("#upd-inline").textContent = t ? `${(DATA.generatedAt || "").slice(5, 10).replace("-", "/")} ${t}` : "—";
   renderDays();
   render();
+  renderGatherings();
+  if (PART_ENABLED) {
+    try {
+      PART_COUNTS = await fetchCounts();
+      render();
+      renderGatherings();
+    } catch {}
+  }
   if (DATA.errors && DATA.errors.length > 0) {
     const names = DATA.errors.map(e => (DATA.facilities.find(f => f.id === e.facilityId) || {}).name || e.facilityId);
     $("#datasrc").insertAdjacentHTML("beforeend", `<br>⚠ 一部の施設(${names.join("、")})の取得に失敗しています。`);

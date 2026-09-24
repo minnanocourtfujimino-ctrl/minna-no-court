@@ -1,7 +1,7 @@
 {
   "source": "https://yoyacool.e-harp.jp/fujimino",
   "lgc": "112453",
-  "_notes": "住所・申込期間は予約システムの施設/室場案内ページ、料金・登録条件は指定管理者サイト fujimino-park-sports.com と市公式サイトから採取(2026-09-23)。fee は一般(高校生以上)が1枠を借りたときの目安(円)。",
+  "_notes": "住所・申込期間は予約システムの施設/室場案内ページ、料金・登録条件は指定管理者サイト fujimino-park-sports.com と市公式サイトから採取(2026-09-23)。fee は一般(高校生以上)が1枠を借りたときの目安(円)。 capacity は参加リストの定員(依頼者指定があるまで仮に10)。",
   "facilities": [
     {
       "id": "undokoen-futsal",
@@ -9,7 +9,11 @@
       "kind": "市",
       "fc": "1009",
       "rc": "121",
-      "sports": ["futsal", "soccer"],
+      "sports": [
+        "futsal",
+        "soccer"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市福岡新田247-1",
       "fee": 1500,
       "feeNote": "1面1時間: 一般1,500円/市内の中学生以下750円(市外は2倍)",
@@ -23,7 +27,11 @@
       "kind": "市",
       "fc": "1004",
       "rc": "101",
-      "sports": ["soccer", "futsal"],
+      "sports": [
+        "soccer",
+        "futsal"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市大井武蔵野1386",
       "fee": 3000,
       "feeNote": "1時間: 全面3,000円・半面1,500円(中学生以下は半額、市外は2倍)",
@@ -37,7 +45,10 @@
       "kind": "市",
       "fc": "1013",
       "rc": "101",
-      "sports": ["soccer"],
+      "sports": [
+        "soccer"
+      ],
+      "capacity": 10,
       "address": "さいたま市西区塚本地先(南畑排水機場脇)",
       "fee": 2000,
       "feeNote": "午前・午後の6時間区分: 一般2,000円/中学生以下600円",
@@ -51,7 +62,10 @@
       "kind": "市",
       "fc": "1011",
       "rc": "111",
-      "sports": ["soccer"],
+      "sports": [
+        "soccer"
+      ],
+      "capacity": 10,
       "address": "富士見市南畑新田地内",
       "fee": 1200,
       "feeNote": "1面2時間: 一般1,200円/中学生以下600円",
@@ -65,7 +79,11 @@
       "kind": "市",
       "fc": "1001",
       "rc": "101",
-      "sports": ["basketball", "futsal"],
+      "sports": [
+        "basketball",
+        "futsal"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市大井武蔵野1392-1",
       "fee": 1200,
       "feeNote": "3時間区分・1/6面400円〜。バスケ1面(3/6面)なら一般1,200円/中学生以下600円",
@@ -79,7 +97,11 @@
       "kind": "市",
       "fc": "1005",
       "rc": "101",
-      "sports": ["basketball", "futsal"],
+      "sports": [
+        "basketball",
+        "futsal"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市福岡1-1-3",
       "fee": 1200,
       "feeNote": "3時間区分・1/3面400円(全面なら一般1,200円)。中学生以下は半額。ふじみ野・富士見・三芳以外は2倍",
@@ -93,7 +115,11 @@
       "kind": "市",
       "fc": "1006",
       "rc": "101",
-      "sports": ["basketball", "futsal"],
+      "sports": [
+        "basketball",
+        "futsal"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市駒林28",
       "fee": 1200,
       "feeNote": "3時間区分・1/3面400円(全面なら一般1,200円)。中学生以下は半額。ふじみ野・富士見・三芳以外は2倍",
@@ -107,7 +133,11 @@
       "kind": "市",
       "fc": "1010",
       "rc": "101",
-      "sports": ["basketball", "futsal"],
+      "sports": [
+        "basketball",
+        "futsal"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市福岡5",
       "fee": 1200,
       "feeNote": "3時間区分・1/6面400円〜。バスケ1面(3/6面)なら一般1,200円/中学生以下600円",
@@ -121,7 +151,10 @@
       "kind": "市",
       "fc": "1010",
       "rc": "141",
-      "sports": ["soccer"],
+      "sports": [
+        "soccer"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市福岡5",
       "fee": 1300,
       "feeNote": "1面1時間: 一般1,300円/中学生以下650円(中学生以下料金は中学生以下が半数超の団体。市外は2倍)",
@@ -135,7 +168,10 @@
       "kind": "市",
       "fc": "1008",
       "rc": "101",
-      "sports": ["soccer"],
+      "sports": [
+        "soccer"
+      ],
+      "capacity": 10,
       "address": "ふじみ野市ふじみ野3-2-1",
       "fee": 750,
       "feeNote": "1面30分750円",
