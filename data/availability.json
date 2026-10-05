@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-06T00:19:43+09:00",
+ "generatedAt": "2026-10-06T01:17:46+09:00",
  "source": "https://yoyacool.e-harp.jp/fujimino",
  "days": [
   "2026-10-06",
@@ -316,11 +316,47 @@
    "teenNote": "高校生は個人登録OK(施設窓口で申請)。中学生は保護者名義で登録。10人以上は団体登録(代表15歳以上・中学生を除く)",
    "bookingNote": "抽選: 2ヶ月前の1〜10日に申込。以降は1ヶ月前の1日9:00から先着(当日まで)",
    "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1001?rc=101&ptn=1",
-   "slots": [],
+   "slots": [
+    {
+     "label": "午前",
+     "start": "09:00",
+     "end": "12:00"
+    },
+    {
+     "label": "午後1",
+     "start": "12:00",
+     "end": "15:00"
+    },
+    {
+     "label": "午後2",
+     "start": "15:00",
+     "end": "18:00"
+    },
+    {
+     "label": "夜間",
+     "start": "18:00",
+     "end": "21:00"
+    }
+   ],
    "availability": {
-    "2026-10-06": [],
-    "2026-10-07": [],
-    "2026-10-08": []
+    "2026-10-06": [
+     "f",
+     "f",
+     "f",
+     "x"
+    ],
+    "2026-10-07": [
+     "x",
+     "x",
+     "x",
+     "x"
+    ],
+    "2026-10-08": [
+     "x",
+     "f",
+     "x",
+     "x"
+    ]
    }
   },
   {
@@ -676,11 +712,6 @@
    }
   }
  ],
- "errors": [
-  {
-   "facilityId": "sogo-arena",
-   "reason": "fetch failed"
-  }
- ],
+ "errors": [],
  "unknownStatusCodes": []
 }
