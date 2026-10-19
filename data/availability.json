@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-19T20:31:14+09:00",
+ "generatedAt": "2026-10-19T21:34:04+09:00",
  "source": "https://yoyacool.e-harp.jp/fujimino",
  "days": [
   "2026-10-19",
@@ -112,11 +112,79 @@
    "teenNote": "高校生は個人登録OK(施設窓口で申請)。中学生は保護者名義で登録。10人以上は団体登録(代表15歳以上・中学生を除く)",
    "bookingNote": "抽選: 2ヶ月前の1〜10日に申込。以降は1ヶ月前の1日9:00から先着(当日まで)",
    "bookingUrl": "https://yoyacool.e-harp.jp/fujimino/FacilityAvailability/Index/112453/1004?rc=101&ptn=1",
-   "slots": [],
+   "slots": [
+    {
+     "label": "9-10",
+     "start": "09:00",
+     "end": "10:00"
+    },
+    {
+     "label": "10-11",
+     "start": "10:00",
+     "end": "11:00"
+    },
+    {
+     "label": "11-12",
+     "start": "11:00",
+     "end": "12:00"
+    },
+    {
+     "label": "12-13",
+     "start": "12:00",
+     "end": "13:00"
+    },
+    {
+     "label": "13-14",
+     "start": "13:00",
+     "end": "14:00"
+    },
+    {
+     "label": "14-15",
+     "start": "14:00",
+     "end": "15:00"
+    },
+    {
+     "label": "15-16",
+     "start": "15:00",
+     "end": "16:00"
+    },
+    {
+     "label": "16-17",
+     "start": "16:00",
+     "end": "17:00"
+    }
+   ],
    "availability": {
-    "2026-10-19": [],
-    "2026-10-20": [],
-    "2026-10-21": []
+    "2026-10-19": [
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o"
+    ],
+    "2026-10-20": [
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o"
+    ],
+    "2026-10-21": [
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o",
+     "o"
+    ]
    }
   },
   {
@@ -644,11 +712,6 @@
    }
   }
  ],
- "errors": [
-  {
-   "facilityId": "sports-center-ground",
-   "reason": "fetch failed"
-  }
- ],
+ "errors": [],
  "unknownStatusCodes": []
 }
